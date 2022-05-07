@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.entity.User;
+import com.example.mapper.MenuMapper;
 import com.example.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ class TokenDemoApplicationTests {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    MenuMapper menuMapper;
 
     //测试MP是否正常
     @Test
@@ -29,5 +33,11 @@ class TokenDemoApplicationTests {
         System.out.println(encode);
     }
 
+
+    @Test
+    void testMapper() {
+        List<String> list = menuMapper.selectPermsByUserId(3L);
+        System.out.println(list);
+    }
 
 }
