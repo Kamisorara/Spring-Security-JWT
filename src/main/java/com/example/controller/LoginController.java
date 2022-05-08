@@ -6,6 +6,9 @@ import com.example.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 登录相关接口
+ */
 @RestController
 public class LoginController {
 
