@@ -54,5 +54,4 @@ class TokenDemoApplicationTests {
         redisCache.setCacheList("test", list);
         System.out.println(redisCache.getCacheList("test"));
     }
-
 }
