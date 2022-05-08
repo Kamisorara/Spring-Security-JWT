@@ -4,9 +4,7 @@ import com.example.entity.User;
 import com.example.entity.resp.ResponseResult;
 import com.example.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LoginController {
@@ -14,14 +12,18 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping("/user/login")
-    public ResponseResult login(@RequestBody User user) {
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
+    public ResponseResult login(@RequestParam("username") String username,
+                                @RequestParam("password") String password) {
+        User user = new User();
+        user.setUserName(username);
+        user.setPassword(password);
         //登录操作
         return loginService.login(user);
     }
 
 
-    @RequestMapping("/user/logout")
+    @RequestMapping(value = "/user/logout",method = RequestMethod.GET)
     public ResponseResult logout() {
         return loginService.logout();
     }
