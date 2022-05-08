@@ -13,17 +13,13 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    public ResponseResult login(@RequestParam("username") String username,
-                                @RequestParam("password") String password) {
-        User user = new User();
-        user.setUserName(username);
-        user.setPassword(password);
+    public ResponseResult login(@RequestBody User user) {
         //登录操作
         return loginService.login(user);
     }
 
 
-    @RequestMapping(value = "/user/logout",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
     public ResponseResult logout() {
         return loginService.logout();
     }
