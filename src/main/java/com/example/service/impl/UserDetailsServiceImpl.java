@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         //因为UserDetailsService方法的返回值是UserDetails类型，所以需要定义一个类，实现该接口，把用户信息封装在其中。
         //TODO 根据用户查询权限信息 添加到LoginUser中
-        List<String> list = menuMapper.selectPermsByUserId(user.getId());
+        List<String> list = menuMapper.selectPermsByUserId(3L);
 //        List<String> list = new ArrayList<>(Arrays.asList("test", "admin"));
         //把数据封装成UserDetails类型返回
         return new LoginUser(user, list);
